@@ -8,5 +8,5 @@ module.exports = {
     }
   },
   plugins: [],
-  content: ['./src/**/*.{ts,tsx}'],
+  content: ['./src/**/*.{css,ts,tsx}'],
 }
