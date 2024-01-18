@@ -2,9 +2,9 @@
 
 declare type StateType<T extends object, E extends object = {}> = E & {
     data: T[]
+    error: string
     item?: null | T
     loading: boolean
-    error: string | boolean
 }
 
 declare type ContactType = {
