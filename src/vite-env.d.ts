@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 
-declare type StateType<T extends object, E extends object={}> = E & {
+declare type StateType<T extends object, E extends object = {}> = E & {
     data: T[]
     item?: null | T
     loading: boolean
@@ -13,6 +13,13 @@ declare type ContactType = {
     firstName: string
     phoneNumber: string
 }
+
+declare type FormPropType = {
+    onClose: Function
+    onSubmit?: Function
+}
+
+declare type InputType = {}
 
 declare type UserType = {
     id: number
