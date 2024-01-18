@@ -45,16 +45,16 @@ section {
     height: 100vh;
     display: flex;
     overflow: auto;
+    position: relative;
     align-items: center;
-    flex-direction: column;
     justify-content: center;
 }
 
 /* this is solely for root element */
 #root {
-    align-items: initial;
+    align-items: center;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: initial;
 }
 
 #root::-webkit-scrollbar {
