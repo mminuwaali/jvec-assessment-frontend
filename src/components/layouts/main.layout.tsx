@@ -1,8 +1,10 @@
+import $header from "../header"
 import { JSXElementConstructor } from "react"
 
 export default ($component: JSXElementConstructor<any>) => () => {
     return <>
-        <main className="grow flex flex-col items-center">
+        <$header />
+        <main className="grow flex flex-col items-center w-full">
             <$component />
         </main>
     </>
