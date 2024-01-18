@@ -28,6 +28,7 @@ export const loginForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
 };
 
 export const registerForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
+    wide: true,
     button: "register",
     title: "register here",
     links: [
