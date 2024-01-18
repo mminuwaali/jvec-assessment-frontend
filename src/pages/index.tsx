@@ -1,3 +1,7 @@
+import $banner from '../components/banner'
+
 export default () => {
-    return <></>
+    return <>
+        <$banner />
+    </>
 }
