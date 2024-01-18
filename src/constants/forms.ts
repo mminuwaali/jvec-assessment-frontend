@@ -1,4 +1,4 @@
-import { MdEmail, MdPassword } from "react-icons/md";
+import { MdEmail, MdPassword, MdPhone } from "react-icons/md"
 
 export const loginForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
     button: "log in",
@@ -25,7 +25,7 @@ export const loginForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
             placeholder: "Enter your password",
         },
     ],
-};
+}
 
 export const registerForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
     wide: true,
@@ -59,4 +59,58 @@ export const registerForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
             placeholder: "Enter a strong password",
         },
     ],
-};
+}
+
+export const createContactForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
+    links: [],
+    button: "create",
+    title: "create new contact",
+    inputs: [
+        {
+            type: "text",
+            required: true,
+            name: "firstName",
+            placeholder: "Enter contact's first name",
+        },
+        {
+            type: "text",
+            required: true,
+            name: "lastName",
+            placeholder: "Enter contact's last name",
+        },
+        {
+            type: "tel",
+            icon: MdPhone,
+            required: true,
+            name: "phoneNumber",
+            placeholder: "Enter contact's phone number",
+        },
+    ],
+}
+
+export const updateContactForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
+    links: [],
+    button: "update",
+    title: "update this contact",
+    inputs: [
+        {
+            type: "text",
+            required: true,
+            name: "firstName",
+            placeholder: "Enter contact's first name",
+        },
+        {
+            type: "text",
+            required: true,
+            name: "lastName",
+            placeholder: "Enter contact's last name",
+        },
+        {
+            type: "tel",
+            icon: MdPhone,
+            required: true,
+            name: "phoneNumber",
+            placeholder: "Enter contact's phone number",
+        },
+    ],
+}
