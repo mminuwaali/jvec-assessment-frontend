@@ -8,13 +8,13 @@ const pages = ({
 })
 
 const routes: (RouteProps & { name: string })[] = [
-    { name: 'index', path: '', element: <pages.index /> },
+    { name: 'index', path: '/', element: <pages.index /> },
     { name: 'contact-index', path: '/contact', element: <pages.contact /> },
 ]
 
 export default routes
 export const url = (name: string, opt: { [key: string]: any } = {}) => {
-    let route = routes.find(item => item.name == name)?.path || name
+    let route = routes.find(item => item.name == name)?.path ?? name
 
     Object.entries(opt).forEach(([key, val]) => route = route.replace(`:${key}`, val))
     return route
