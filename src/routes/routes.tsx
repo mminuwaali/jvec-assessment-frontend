@@ -4,7 +4,7 @@ import * as layout from '../components/layouts'
 
 const pages = ({
     index: layout.main(lazy(() => import('../pages'))),
-    contact: layout.main(lazy(() => import('../pages'))),
+    contact: layout.contact(lazy(() => import('../pages/contact'))),
 })
 
 const routes: (RouteProps & { name: string })[] = [
