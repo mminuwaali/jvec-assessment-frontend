@@ -1,11 +1,26 @@
 import { useMemo } from 'react'
-import {$contact} from './cards'
+import $contact from './cards/contact'
 import { useAppSelector } from '../store'
+import { useSearch } from '../store/context/search.context'
 import { convertArrayToObject } from '../utilities/function'
 
 export default () => {
+    const { q } = useSearch()
     const { data, loading } = useAppSelector(state => state.contact)
-    const contacts = useMemo(() => convertArrayToObject(data), [data])
+
+    const filteredContacts = useMemo(() => {
+        if (!q) return data
+
+        // Filter data based on the search query (q)
+        const filteredData = data.filter(contact =>
+            contact.firstName.toLowerCase().startsWith(q.toLowerCase()) ||
+            contact.lastName.toLowerCase().startsWith(q.toLowerCase()) ||
+            contact.phoneNumber.includes(q)
+        )
+        return filteredData
+    }, [q, data])
+
+    const contacts = useMemo(() => convertArrayToObject(filteredContacts), [q, filteredContacts])
 
     return <div className="w-full flex flex-col gap-2">
         {loading && <div className="w-full flex items-center justify-center flex-none p-4">
