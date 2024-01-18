@@ -2,6 +2,8 @@ import { JSXElementConstructor } from "react"
 
 export default ($component: JSXElementConstructor<any>) => () => {
     return <>
-        <$component />
+        <main className="grow flex flex-col items-center">
+            <$component />
+        </main>
     </>
 }
