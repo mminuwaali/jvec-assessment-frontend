@@ -1,9 +1,10 @@
-import './style.css';
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import './style.css'
+import $routes from './routes'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 
 createRoot(document.querySelector<HTMLDivElement>('#root')!).render(
     <StrictMode>
-        <h1>hello world</h1>
+        <$routes />
     </StrictMode>
-);
+)
