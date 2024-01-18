@@ -20,8 +20,10 @@ export default ($component: JSXElementConstructor<any>) => () => {
     const { hash, pathname } = useLocation()
     const { user, error, loading } = useAppSelector(state => state.account)
 
+    const handleClosePortal = () => nav(pathname, { replace: true })
+
     useEffect(() => {
-        if (user && /(login|register)$/.test(hash)) nav(pathname, { replace: true })
+        if (user && /(login|register)$/.test(hash)) handleClosePortal()
     }, [hash, user])
 
     const components: ComponentObjectType = ({
@@ -40,8 +42,6 @@ export default ($component: JSXElementConstructor<any>) => () => {
             },
         },
     })
-
-    const handleClosePortal = () => nav(pathname, { replace: true })
 
     const form = useMemo(() => components[hash.slice(1)], [hash])
 
