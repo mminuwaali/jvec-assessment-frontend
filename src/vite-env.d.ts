@@ -15,11 +15,24 @@ declare type ContactType = {
 }
 
 declare type FormPropType = {
+    title: string
+    button: string
+    error?: string
+    wide?: boolean
+    loading?: boolean
     onClose: Function
+    inputs: InputType[]
     onSubmit?: Function
+    links: { to: string, title: string }[]
 }
 
-declare type InputType = {}
+declare type InputType = {
+    type: any
+    icon?: any
+    name: string
+    required: boolean
+    placeholder: string
+}
 
 declare type UserType = {
     id: number
