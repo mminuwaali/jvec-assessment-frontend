@@ -23,7 +23,8 @@ export default ($component: JSXElementConstructor<any>) => () => {
     const handleClosePortal = () => nav(pathname, { replace: true })
 
     useEffect(() => {
-        if (user && /(login|register)$/.test(hash)) handleClosePortal()
+
+        if (user && /(login|register)$/.test(hash)) { handleClosePortal(); nav('/contact', { replace: true }) }
     }, [hash, user])
 
     const components: ComponentObjectType = ({
