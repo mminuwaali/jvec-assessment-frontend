@@ -10,7 +10,7 @@ export default () => {
     return <aside className="z-10 gap-6 text-white w-14 md:w-52 h-full flex flex-col flex-none p-2 py-4 pb-10 md:p-4 relative before:absolute before:w-[.05rem] before:h-[90%] before:right-0 before:bg-slate-700 before:top-1/2 before:-translate-y-1/2">
         <span className="w-full gap-2 flex items-center justify-center md:justify-start lowercase" style={{ fontVariant: 'small-caps' }}>
             <img src={logo} alt="" className="h-8" />
-            <span className="hidden md:flex">{user?.username || '__________'}</span>
+            <span className="hidden md:flex">{user?.username ?? '__________'}</span>
         </span>
         <nav className="grow flex flex-col justify-end gap-1">
             <Link to='#new-contact' className="p-2 rounded w-full flex items-center justify-center md:justify-start gap-2 bg-blue-500 text-white font-semibold outline-none">
