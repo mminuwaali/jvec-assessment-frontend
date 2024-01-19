@@ -1,7 +1,7 @@
 import { PURGE } from 'redux-persist';
 import api from '../../utilities/api';
 import { formatNestError } from '../../utilities/error';
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState: StateType<ContactType> = { data: [], error: '', item: null, loading: false };
 
@@ -16,6 +16,7 @@ const slice = createSlice({
     reducers: {
         clearError: (state) => { state.error = ''; },
         resetLoading: (state) => { state.loading = false; },
+        getContact: (state, { payload }: PayloadAction<number>) => { state.item = state.data.find(ele => ele.id == payload) },
     },
     extraReducers(builder) {
         // reset state
@@ -24,7 +25,7 @@ const slice = createSlice({
         builder.addCase(getContacts.fulfilled, (state, { payload }) => { state.data = payload; });
         builder.addCase(createContact.fulfilled, (state, { payload }) => { state.data.push(payload); });
         builder.addCase(deleteContact.fulfilled, (state, { meta }) => { state.data = state.data.filter(ele => ele.id != meta.arg) });
-        builder.addCase(updateContact.fulfilled, (state, { payload }) => { state.data = state.data.map(ele => ele.id == payload.id ? payload : ele) });
+        builder.addCase(updateContact.fulfilled, (state, { payload }) => { state.item = undefined; state.data = state.data.map(ele => ele.id == payload.id ? payload : ele) });
 
         builder // common functionalities for the async requests
             .addMatcher(({ type }: any) => /^contact.*pending$/.test(type), (state: typeof initialState) => { state.error = ''; state.loading = true; })
@@ -34,4 +35,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
-export const { resetLoading, clearError } = slice.actions;
+export const { resetLoading, clearError, getContact } = slice.actions;
