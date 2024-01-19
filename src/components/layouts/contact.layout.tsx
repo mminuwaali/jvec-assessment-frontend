@@ -4,10 +4,10 @@ import $sidebar from "../sidebar"
 import { createPortal } from "react-dom"
 import { useLocation, useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../store"
-import { getContacts } from "../../store/slice/contact.slice"
 import $earchProvider from "../../store/context/search.context"
 import { JSXElementConstructor, useEffect, useMemo } from "react"
 import { createContactForm, updateContactForm } from "../../constants/forms"
+import { createContact, getContacts, updateContact } from "../../store/slice/contact.slice"
 
 type ComponentObjectType = {
     [key: string]: {
@@ -21,7 +21,7 @@ export default ($component: JSXElementConstructor<any>) => () => {
     const dispatch = useAppDispatch()
     const { hash, pathname } = useLocation()
     const user = useAppSelector(state => state.account.user)
-    const { data, error, loading } = useAppSelector(state => state.contact)
+    const { data, item, error, loading } = useAppSelector(state => state.contact)
 
     useEffect(() => {
         if (user && data.length === 0) dispatch(getContacts())
@@ -31,11 +31,17 @@ export default ($component: JSXElementConstructor<any>) => () => {
     const components: ComponentObjectType = ({
         'new-contact': {
             component: $form,
-            props: { ...createContactForm },
+            props: {
+                ...createContactForm,
+                onSubmit: (data:ContactType) => dispatch(createContact(data)),
+            },
         },
         'update-contact': {
             component: $form,
-            props: { ...updateContactForm },
+            props: {
+                ...updateContactForm,
+                onSubmit: (data:ContactType) => dispatch(updateContact(data)),
+            },
         },
     })
 
@@ -58,6 +64,7 @@ export default ($component: JSXElementConstructor<any>) => () => {
                 onSubmit={() => { }}
                 {...form.props as any}
                 onClose={handleClosePortal}
+                data={hash.endsWith('update-contact') && item}
             />, document.querySelector<HTMLDivElement>('#portal')!)}
         </section>
     </$earchProvider>
