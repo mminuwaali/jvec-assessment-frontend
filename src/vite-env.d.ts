@@ -14,7 +14,8 @@ declare type ContactType = {
     phoneNumber: string
 }
 
-declare type FormPropType = {
+declare type FormPropType<T = any[]> = {
+    data?: T
     title: string
     button: string
     error?: string
