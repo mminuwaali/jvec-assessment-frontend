@@ -1,8 +1,8 @@
 import axios from "axios"
 import { formatNestError } from "./error"
 
-export const baseURL = "http://localhost:3000/api"
-// export const baseURL = "https://jvec-solution-backend.onrender.com/api"
+// export const baseURL = "http://localhost:3000/api"
+export const baseURL = "https://jvec-solution-backend.onrender.com/api"
 
 const api = axios.create({ baseURL })
 
