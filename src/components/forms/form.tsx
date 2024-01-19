@@ -3,7 +3,7 @@ import { IoClose } from "react-icons/io5"
 import { FormEventHandler, useState } from "react"
 
 export default (props: FormPropType) => {
-    const [data, setData] = useState<Record<string, any>>({})
+    const [data, setData] = useState<Record<string, any>>(props.data || {})
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = (ev) => {
         ev.preventDefault()
