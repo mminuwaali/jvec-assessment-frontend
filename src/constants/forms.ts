@@ -79,8 +79,8 @@ export const createContactForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
             placeholder: "Enter contact's last name",
         },
         {
-            type: "tel",
             icon: MdPhone,
+            type: "number",
             required: true,
             name: "phoneNumber",
             placeholder: "Enter contact's phone number",
@@ -106,8 +106,8 @@ export const updateContactForm: Omit<FormPropType, 'onClose' | 'onSubmit'> = {
             placeholder: "Enter contact's last name",
         },
         {
-            type: "tel",
             icon: MdPhone,
+            type: "number",
             required: true,
             name: "phoneNumber",
             placeholder: "Enter contact's phone number",
