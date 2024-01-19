@@ -1,6 +1,6 @@
 import { } from "react-icons/im"
 import { useEffect } from "react"
-import { MdClose } from "react-icons/md"
+import { FaTrash } from "react-icons/fa"
 import { useAppDispatch, useAppSelector } from "../../store"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import { deleteContact, getContact } from "../../store/slice/contact.slice"
@@ -23,8 +23,8 @@ export default (props: ContactType) => {
             <span className="text-white font-semibold capitalize">{props.firstName} {props.lastName}</span>
             <span className="text-gray-200 text-sm">{props.phoneNumber}</span>
         </Link>
-        <div className="flex items-center justify-center overflow-hidden flex-none w-0 h-6 my-auto group-hover:w-6 transition-all z-10 rounded-full hover:bg-black" onClick={() => dispatch(deleteContact(props.id))}>
-            <MdClose className="text-red-500 text-lg" />
+        <div className="flex items-center justify-center overflow-hidden flex-none w-0 h-8 my-auto group-hover:w-8 group-hover:p-2 transition-all z-10 rounded-full hover:bg-black" onClick={() => dispatch(deleteContact(props.id))}>
+            <FaTrash className="text-red-500" />
         </div>
     </div>
 }
